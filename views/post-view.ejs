@@ -1,0 +1,39 @@
+
+<%-include('partials/header.ejs')%>
+
+    <div class="container-fluid">
+        <div class="row content">
+
+            <%-include("partials/navBar.ejs")%>
+
+                <div class="col-sm-9">
+
+                    <% if(locals.post){ %>
+
+                            <h4><small>Post View</small></h4>
+                            <h2><a href="/post/<%=post.postId%>">
+                                    <%=post.title%>
+                                </a></h2>
+                            <h5><span class="glyphicon glyphicon-time"></span> Post by <%=post.author%>, <%=post.date%>.</h5>
+                            <h5><span class="label label-primary"><%=post.category%></span></h5><br>
+                            <p>
+                                <%=post.content%>
+                            </p>
+                            <br><br>
+
+                            <form action="/post-update" method="get">
+                                <input type="hidden" name="postId" value="<%=post.postId%>" id="postId">
+                                <button class="btn btn-success form-control" type="submit">Edit Post</button>
+                            </form>
+                            <button class="btn btn-warning form-control" type="button" id="delete-post">Delete Post</button>
+                             <% } %>
+
+
+
+
+
+                </div>
+        </div>
+    </div>
+
+    <%-include('partials/footer.ejs')%>

@@ -1,0 +1,33 @@
+<%-include('partials/header.ejs')%>
+
+    <div class="container-fluid">
+        <div class="row content">
+
+            <%-include("partials/navBar.ejs")%>
+
+                <div class="col-sm-9">
+
+                    <% if(locals.listPost){ %>
+                        <% listPost.forEach(post=> { %>
+
+                            <h4><small>RECENT POSTS</small></h4>
+                            <hr>
+                            <h2><a href="/post/<%=post.postId%>">
+                                    <%=post.title%>
+                                </a></h2>
+                            <h5><span class="glyphicon glyphicon-time"></span> Post by <%=post.author%>
+                                    ", <%=post.date%>".</h5>
+                            <h5><span class="label label-primary">
+                                    <%=post.category%></span></h5><br>
+                            <p>
+                                <%=post.description%>"
+                            </p>
+                            <br><br>
+                            <% }); %>
+                                <% } %>
+
+                </div>
+        </div>
+    </div>
+
+    <%-include('partials/footer.ejs')%>
